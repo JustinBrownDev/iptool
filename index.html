@@ -36,7 +36,14 @@
 
             return jwt;
         }
-
+        function openWebsite(baseUrl, textboxId,extra_whatever) {
+            // Get the extension from the textbox
+            const extension = document.getElementById(textboxId).value;
+            logButtonPress(textboxId,extension,extra_whatever)
+            // Open the base URL with the extension in a new tab
+            const fullUrl = baseUrl + extension + extra_whatever;
+            window.open(fullUrl, '_blank');
+        }
         // Function to get Access Token using JWT
         async function getAccessToken() {
             const jwt = generateJWT();
@@ -84,7 +91,11 @@
     <h1>Target Analysis Helper Site</h1>
     <p>skibidi target</p>
     
-    <button onclick="logButtonPress('Button1','some data', 'some more, different, data')">Button 1</button>
-    <button onclick="logButtonPress('Button2','some data', 'some more, different, data')">Button 2</button>
+    <!--<button onclick="logButtonPress('Button1','some data', 'some more, different, data')">Button 1</button>
+    <button onclick="logButtonPress('Button2','some data', 'some more, different, data')">Button 2</button>-->
+    <label for="googleExtension">Google Search:</label>
+    <input type="text" id="googleExtension" placeholder="Enter search query">
+    <button onclick="openWebsite('https://www.google.com/search?q=', 'googleExtension')">Search Google</button>
+    <br><br>
 </body>
 </html>
