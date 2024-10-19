@@ -43,7 +43,7 @@
             const extension = document.getElementById(textboxId).value;
             logButtonPress(textboxId,extension,extra_whatever)
             // Open the base URL with the extension in a new tab
-            const fullUrl = baseUrl + extension + extra_whatever;
+            const fullUrl = baseUrl + extension;
             window.open(fullUrl, '_blank');
         }
         // Function to get Access Token using JWT
@@ -100,9 +100,10 @@
     <button onclick="openWebsite('https://www.google.com/search?q=', 'googleExtension','None')" style="background-color:#101010; color:#00ff00">Search Google</button>
   <br><br>
      <label for="bgpTools">ASN (BGPtools)</label>
-    <p>include 'AS' before the number, or similar</p>
-    <input type="text" id="bgpTools" placeholder="Enter search query" style="background-color:#101010; color:#00ff00">
+    <p style="font-size:small;color:white">Only include the number, no 'AS'</p>
+    <input type="text" id="bgpTools" placeholder="input field" style="background-color:#101010; color:#00ff00">
     <button onclick="openWebsite('https://bgp.tools/as/', 'bgpTools','None')" style="background-color:#101010; color:#00ff00">Search Google</button>
-    <br><br>
+  <br><br>
+    
 </body>
 </html>
