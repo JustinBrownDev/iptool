@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WIP area, please stand clear</title>
+    
+  </head>
+  <body>
+    <div id="output_text"></div>
+    <script>
+function observeDOMChanges() {
+
+    // Create a callback function to execute when mutations are detected
+    const callback = function(mutationsList) {
+        for (let mutation of mutationsList) {
+            if (mutation.target.className === "de1") {
+                document.getElementById('output_text').textContent = mutation.target.textContent
+                document.getElementsByClassName("embedPastebin")[0].remove()
+            }
+        }
+    };
+
+    // Create a new MutationObserver instance
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node
+    observer.observe(document.body.getRootNode(), {
+  subtree: true,
+  childList: true,
+});
+}
+
+// Call the function to start observing
+observeDOMChanges();
+    </script>
+    <script src="https://pastebin.com/embed_js/AFKdtsY0"></script>
+  </body>
+</html>
