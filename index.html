@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
 
     <script src="https://cdn.jsdelivr.net/npm/jsrsasign@10.5.23/lib/jsrsasign-all-min.js"></script>
+    
     <!-- For JWT creation -->
     <script>
         const serviceAccountEmail = 'sheets-api@rent-with-jacob.iam.gserviceaccount.com'; // Replace with your service account email
@@ -139,12 +140,39 @@
                   <br>
                 </td>
                 <td style="font-size: medium; text-align: center;">
-                  None Yet
+                  <div id="output_text"></div>
                 </td>
             </tr>
         </tbody>
     </table>
 
+    <script>
+function observeDOMChanges() {
+
+    // Create a callback function to execute when mutations are detected
+    const callback = function(mutationsList) {
+        for (let mutation of mutationsList) {
+            if (mutation.target.className === "de1") {
+                document.getElementById('output_text').textContent = mutation.target.textContent
+                document.getElementsByClassName("embedPastebin")[0].remove()
+            }
+        }
+    };
+
+    // Create a new MutationObserver instance
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node
+    observer.observe(document.body.getRootNode(), {
+  subtree: true,
+  childList: true,
+});
+}
+
+// Call the function to start observing
+observeDOMChanges();
+    </script>
+    <script src="https://pastebin.com/embed_js/AFKdtsY0"></script>
 
 
 </body>
