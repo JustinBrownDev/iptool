@@ -95,11 +95,11 @@
 </head>
 
 <body style="background-color:#050505; color:#07ee08; font-family: 'Hack', monospace;">
-    <table border="0" style="width: 80%; position: relative;">
+    <table border="0">
         <thead>
             <tr>
-                <th>
-                    <div>
+                <th colspan="3">
+                    <div style="width: 80%;">
 
                         <h1>Target Analysis Helper Site</h1>
                         <div style="height: 10px;"></div>
@@ -110,7 +110,7 @@
                 </th>
 
                 <th>
-                    <div style="margin-top: 12px;height: min-content;">
+                    <div style="margin-top: 12px;height: min-content;width: 80%;">
                         <h1>helpful data:</h1>
                         <div style="height: 10px;"></div>
                         <hr style="border-color: #07ee08; width: 50%;">
@@ -122,7 +122,7 @@
         </thead>
         <tbody>
             <tr>
-                <td style="font-size: medium; text-align: center;">
+                <td style="font-size: medium; text-align: center;width: 80%;" colspan="3">
 
                     <div style="height: 10px;"></div>
                     <h2>BGP.tools</h2>
@@ -146,7 +146,17 @@
                         </div>
 
                     </label>
-
+                </td>
+                <td style="width: 80%;">
+                    <span>
+                        <div style="width:max-content;margin: auto;position: relative;">
+                            <div id="output_text"></div>
+                        </div>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: medium; text-align: center;width: 80%;" colspan="3">
                     <br>
                     <label for="bgpTools-IP" style="display: inline;">
 
@@ -169,7 +179,10 @@
                         </div>
 
                     </label>
-
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: medium; text-align: center;width: 80%;" colspan="3">
                     <br>
                     <label for="bgpTools-HOST" style="display: inline;">
 
@@ -192,7 +205,10 @@
                         </div>
 
                     </label>
-
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: medium; text-align: center;width: 80%;" colspan="3">
                     <br>
                     <div style="height: 10px;"></div>
                     <h2>Whois</h2>
@@ -217,6 +233,10 @@
                         </div>
 
                     </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: medium; text-align: center;width: 80%;" colspan="3">
                     <br>
                     <label for="whois-HOST" style="display: inline;">
                         <div>
@@ -241,16 +261,10 @@
                     </label>
                     <br>
                 </td>
-                <td>
-                    <span>
-                        <div style="width:max-content;margin: auto;position: relative;">
-                            <div id="output_text"></div>
-                        </div>
-                    </span>
+            <tr>
 
 
-                </td>
-            </tr>
+
         </tbody>
     </table>
 
