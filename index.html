@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Button Presses to Google Sheets</title>
+    <title>Justin's Playground site</title>
     <script src="https://cdn.jsdelivr.net/npm/jsrsasign@10.5.23/lib/jsrsasign-all-min.js"></script> <!-- For JWT creation -->
     <script>
         const serviceAccountEmail = 'sheets-api@rent-with-jacob.iam.gserviceaccount.com'; // Replace with your service account email
@@ -57,12 +57,12 @@
         }
 
         // Function to log button press to Google Sheets
-        async function logButtonPress(buttonId) {
+        async function logButtonPress(data1,data2,data3) {
             const accessToken = await getAccessToken();
 
-            const range = 'Sheet1!A:B'; // The range where you want to log the button press
+            const range = 'Sheet1!A:D'; // The range where you want to log the button press
             const timestamp = new Date().toISOString();
-            const values = [[timestamp, buttonId]];
+            const values = [[timestamp, data1,data2,data3]];
 
             const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED`, {
                 method: 'POST',
@@ -81,7 +81,9 @@
     </script>
 </head>
 <body>
-    <h1>Log Button Presses to Google Sheets</h1>
+    <h1>Target Analysis Helper Site</h1>
+    <p>skibidi target</p>
+    
     <button onclick="logButtonPress('Button1')">Button 1</button>
     <button onclick="logButtonPress('Button2')">Button 2</button>
 </body>
