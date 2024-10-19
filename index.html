@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
 
     <script src="https://cdn.jsdelivr.net/npm/jsrsasign@10.5.23/lib/jsrsasign-all-min.js"></script>
-    
-    
+
+
     <!-- For JWT creation -->
     <script>
         const serviceAccountEmail = 'sheets-api@rent-with-jacob.iam.gserviceaccount.com'; // Replace with your service account email
@@ -95,27 +95,28 @@
 </head>
 
 <body style="background-color:#050505; color:#07ee08; font-family: 'Hack', monospace;">
-    <table border="0" style="width: 80%; position: relative; margin: auto;">
+    <table border="0" style="width: 80%; position: relative;">
         <thead>
             <tr>
                 <th>
                     <div>
+
                         <h1>Target Analysis Helper Site</h1>
-                        <p>skibidi target</p>
                         <div style="height: 10px;"></div>
-
-
-
-
-
+                        <hr style="border-color: #07ee08; width: 70%;">
+                        <div style="height: 10px;"></div>
 
                     </div>
                 </th>
+
                 <th>
-                    <h1>
-                        helpful data:
-                    </h1>
-                    <div style="height: 10px;"></div>
+                    <div style="margin-top: 12px;height: min-content;">
+                        <h1>helpful data:</h1>
+                        <div style="height: 10px;"></div>
+                        <hr style="border-color: #07ee08; width: 50%;">
+                        <div style="height: 10px;"></div>
+                    </div>
+
                 </th>
             </tr>
         </thead>
@@ -123,55 +124,161 @@
             <tr>
                 <td style="font-size: medium; text-align: center;">
 
-                  <div style="height: 10px;"></div>
+                    <div style="height: 10px;"></div>
+                    <h2>BGP.tools</h2>
+                    <label for="bgpTools-AS" style="display: inline;">
 
-                  <label for="bgpTools" style="display: inline;">
-                      <span>
-                          ASN's ( BGPtools )
-                          <input type="text" id="bgpTools" placeholder="input field"
-                          style="background-color:#101010; color:#00ff00" onsubmit="openWebsite('https://bgp.tools/as/', 'bgpTools','None')">
-                      <button onclick="openWebsite('https://bgp.tools/as/', 'bgpTools','None')"
-                          style="background-color:#101010; color:#00ff00">search</button>
-  
-                      </span>
-                  </label>
-                  <div style="height: 3px;"></div>
-                  <div style="color:white"> Only include the number, no 'AS'</div>
-                  
-                  <br>
+                        <div>
+                            <span style="width: max-content;">
+                                <div style="width:max-content;margin: auto;position: relative;"> ASN's -
+                                    <input type="text" id="bgpTools-AS" placeholder="input field"
+                                        style="background-color:#101010; color:#00ff00;"
+                                        onsubmit="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','None')">
+
+                                    <button onclick="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','None')"
+                                        style="background-color:#101010; color:#00ff00">search</button>
+                                </div>
+                            </span>
+
+                            <div style="height: 3px;"></div>
+
+                            <div style="height: 9px;"></div>
+                        </div>
+
+                    </label>
+
+                    <br>
+                    <label for="bgpTools-IP" style="display: inline;">
+
+                        <div>
+                            <span style="width: max-content;">
+                                <div style="width:max-content;margin: auto;position: relative;">IP's -
+                                    <input type="text" id="bgpTools-IP" placeholder="input field"
+                                        style="background-color:#101010; color:#00ff00;"
+                                        onsubmit="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','None')">
+
+                                    <button onclick="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','None')"
+                                        style="background-color:#101010; color:#00ff00">search</button>
+                                </div>
+
+                            </span>
+
+                            <div style="height: 3px;"></div>
+
+                            <div style="height: 9px;"></div>
+                        </div>
+
+                    </label>
+
+                    <br>
+                    <label for="bgpTools-HOST" style="display: inline;">
+
+                        <div>
+                            <span style="width: max-content;">
+                                <div style="width:max-content;margin: auto;position: relative;">Hostname -
+                                    <input type="text" id="bgpTools-HOST" placeholder="input field"
+                                        style="background-color:#101010; color:#00ff00;"
+                                        onsubmit="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','None')">
+
+                                    <button onclick="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','None')"
+                                        style="background-color:#101010; color:#00ff00;">search</button>
+                                </div>
+
+                            </span>
+
+                            <div style="height: 3px;"></div>
+
+                            <div style="height: 9px;"></div>
+                        </div>
+
+                    </label>
+
+                    <br>
+                    <div style="height: 10px;"></div>
+                    <h2>Whois</h2>
+                    <label for="whois-IP" style="display: inline;">
+                        <div>
+                            <span style="width: max-content;">
+                                <div style="width:max-content;margin: auto;position: relative;"> Whois (ip) -
+                                    <input type="text" id="whois-IP" placeholder="input field"
+                                        style="background-color:#101010; color:#00ff00;"
+                                        onsubmit="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','None')">
+
+                                    <button
+                                        onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','None')"
+                                        style="background-color:#101010; color:#00ff00">search</button>
+                                </div>
+
+                            </span>
+
+                            <div style="height: 3px;"></div>
+
+                            <div style="height: 9px;"></div>
+                        </div>
+
+                    </label>
+                    <br>
+                    <label for="whois-HOST" style="display: inline;">
+                        <div>
+                            <span style="width: max-content;">
+                                <div style="width:max-content;margin: auto;position: relative;"> Whois (Hostname) -
+                                    <input type="text" id="whois-HOST" placeholder="input field"
+                                        style="background-color:#101010; color:#00ff00;"
+                                        onsubmit="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-HOST','None')">
+
+                                    <button
+                                        onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-HOST','None')"
+                                        style="background-color:#101010; color:#00ff00">search</button>
+                                </div>
+
+                            </span>
+
+                            <div style="height: 3px;"></div>
+
+                            <div style="height: 9px;"></div>
+                        </div>
+
+                    </label>
+                    <br>
                 </td>
-                <td style="font-size: medium; text-align: center;">
-                  <div id="output_text"></div>
+                <td>
+                    <span>
+                        <div style="width:max-content;margin: auto;position: relative;">
+                            <div id="output_text"></div>
+                        </div>
+                    </span>
+
+
                 </td>
             </tr>
         </tbody>
     </table>
 
     <script>
-function observeDOMChanges() {
+        function observeDOMChanges() {
 
-    // Create a callback function to execute when mutations are detected
-    const callback = function(mutationsList) {
-        for (let mutation of mutationsList) {
-            if (mutation.target.className === "de1") {
-                document.getElementById('output_text').textContent = mutation.target.textContent
-                document.getElementsByClassName("embedPastebin")[0].remove()
-            }
+            // Create a callback function to execute when mutations are detected
+            const callback = function (mutationsList) {
+                for (let mutation of mutationsList) {
+                    if (mutation.target.className === "de1") {
+                        document.getElementById('output_text').textContent = mutation.target.textContent
+                        document.getElementsByClassName("embedPastebin")[0].remove()
+                    }
+                }
+            };
+
+            // Create a new MutationObserver instance
+            const observer = new MutationObserver(callback);
+
+            // Start observing the target node
+            observer.observe(document.body.getRootNode(), {
+                subtree: true,
+                childList: true,
+            });
         }
-    };
 
-    // Create a new MutationObserver instance
-    const observer = new MutationObserver(callback);
-
-    // Start observing the target node
-    observer.observe(document.body.getRootNode(), {
-  subtree: true,
-  childList: true,
-});
-}
-
-// Call the function to start observing
-observeDOMChanges();
+        // Call the function to start observing
+        observeDOMChanges();
     </script>
     <script src="https://pastebin.com/embed_js/wBKA22WG"></script>
 
