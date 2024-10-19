@@ -70,12 +70,12 @@
         }
 
         // Function to log button press to Google Sheets
-        async function logButtonPress(data1, data2, data3) {
+        async function logButtonPress(textbox_id, data, Search_Type) {
             const accessToken = await getAccessToken();
-
-            const range = 'Sheet1!A:D'; // The range where you want to log the button press
+            const range_dictionary= {'IP':'Sheet1!A:D','HOST':'Sheet1!E:H','AS':'Sheet1!I:L'}
+            var range = range_dictionary[Search_Type] // The range where you want to log the button press
             const timestamp = new Date().toISOString();
-            const values = [[timestamp, data1, data2, data3]];
+            const values = [[timestamp, textbox_id, data]];
 
             const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED`, {
                 method: 'POST',
@@ -133,9 +133,9 @@
                                 <div style="width:max-content;margin: auto;position: relative;"> ASN's -
                                     <input type="text" id="bgpTools-AS" placeholder="input field"
                                         style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','None')">
+                                        onsubmit="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','AS')">
 
-                                    <button onclick="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','None')"
+                                    <button onclick="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','AS')"
                                         style="background-color:#101010; color:#00ff00">search</button>
                                 </div>
                             </span>
@@ -165,9 +165,9 @@
                                 <div style="width:max-content;margin: auto;position: relative;">IP's -
                                     <input type="text" id="bgpTools-IP" placeholder="input field"
                                         style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','None')">
+                                        onsubmit="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','IP')">
 
-                                    <button onclick="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','None')"
+                                    <button onclick="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','IP')"
                                         style="background-color:#101010; color:#00ff00">search</button>
                                 </div>
 
@@ -191,9 +191,9 @@
                                 <div style="width:max-content;margin: auto;position: relative;">Hostname -
                                     <input type="text" id="bgpTools-HOST" placeholder="input field"
                                         style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','None')">
+                                        onsubmit="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','HOST')">
 
-                                    <button onclick="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','None')"
+                                    <button onclick="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','HOST')"
                                         style="background-color:#101010; color:#00ff00;">search</button>
                                 </div>
 
@@ -218,10 +218,10 @@
                                 <div style="width:max-content;margin: auto;position: relative;"> Whois (ip) -
                                     <input type="text" id="whois-IP" placeholder="input field"
                                         style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','None')">
+                                        onsubmit="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','IP')">
 
                                     <button
-                                        onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','None')"
+                                        onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','IP')"
                                         style="background-color:#101010; color:#00ff00">search</button>
                                 </div>
 
@@ -244,10 +244,10 @@
                                 <div style="width:max-content;margin: auto;position: relative;"> Whois (Hostname) -
                                     <input type="text" id="whois-HOST" placeholder="input field"
                                         style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-HOST','None')">
+                                        onsubmit="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-HOST','HOST')">
 
                                     <button
-                                        onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-HOST','None')"
+                                        onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-HOST','HOST')"
                                         style="background-color:#101010; color:#00ff00">search</button>
                                 </div>
 
