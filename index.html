@@ -6,6 +6,9 @@
     <title>Google Sheets API Example</title>
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
+        // Global variable to keep track of whether the client is initialized
+        let isGapiClientLoaded = false;
+
         // Load the Google API client library and initialize the API
         function loadClient() {
             gapi.load("client:auth2", initClient);
@@ -19,6 +22,7 @@
                 scope: "https://www.googleapis.com/auth/spreadsheets.readonly" // Adjust scope if needed
             }).then(function () {
                 console.log("GAPI client loaded for API");
+                isGapiClientLoaded = true; // Set flag to true once API is ready
             }, function(error) {
                 console.error("Error loading GAPI client for API", error);
             });
@@ -26,6 +30,11 @@
 
         // Fetch data from the specified Google Sheet
         function getSheetData() {
+            if (!isGapiClientLoaded) {
+                alert("API client is not fully loaded yet. Please try again in a few seconds.");
+                return;
+            }
+
             const spreadsheetId = '1KFOoEyzY5r6-hyeLrp4mQfHCDQrjURgFI1nw0oFCX-k'; // Replace with your Spreadsheet ID
             const range = 'Sheet1!A1:B10'; // Adjust as needed
 
@@ -34,7 +43,7 @@
                 range: range
             }).then(function(response) {
                 const data = response.result.values;
-                if (data.length > 0) {
+                if (data && data.length > 0) {
                     let output = '<table border="1">';
                     data.forEach(row => {
                         output += '<tr>';
