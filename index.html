@@ -72,7 +72,7 @@
         // Function to log button press to Google Sheets
         async function logButtonPress(textbox_id, data, Search_Type) {
             const accessToken = await getAccessToken();
-            const range_dictionary= {'IP':'Sheet1!A:D','HOST':'Sheet1!E:H','AS':'Sheet1!I:L'}
+            const range_dictionary = { 'IP': 'Sheet1!A:D', 'HOST': 'Sheet1!E:H', 'AS': 'Sheet1!I:L' }
             var range = range_dictionary[Search_Type] // The range where you want to log the button press
             const timestamp = new Date().toISOString();
             const values = [[timestamp, textbox_id, data]];
@@ -92,181 +92,177 @@
             console.log('Button press logged:', result);
         }
     </script>
+     <style>
+        /* General table styling */
+        table {
+            width: 100%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding:2px;
+        }
+        
+        
+        .left-section h2 {
+            margin:auto;
+            text-align: right;
+        }
+        h1, h2 {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        /* Section headers */
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* Horizontal lines under headers */
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #07ee08;
+        }
+
+        /* Input fields */
+        input[type="text"] {
+            padding:2px;
+            width: 100%;
+            padding: 5px;
+            color: #92f392;
+            background-color: #061106;
+            text-align: center;
+        }
+
+        /* Buttons */
+        button {
+            padding:2px;
+            width: 80%;
+            padding: 5px;
+            color: #6edb6e;
+            
+            background-color: #101010;
+            border: 1px groove #6edb6e;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Table cells for input groups */
+
+        .input_label {
+            width: 40%;
+            color:#92f392;
+            text-align: right;
+            padding-right: 3px;
+        }
+
+        /* Left section with ASN's, IP's, and Hostnames */
+        .left-section {
+            
+
+        }
+
+        /* Right section for output text */
+        .right-section {
+            width: 50%;
+            vertical-align: top;
+            height: 100%;
+        }
+
+        /* Output text area */
+        #output_text {
+            height: 100%;
+            border: 1px solid #07ee08;
+            padding: 10px;
+            background-color: #061106;
+            color: #92f392;
+            overflow-y: auto;
+            text-align: left;
+            display:block;  
+            min-height: 300px;
+        }
+    </style>
 </head>
 
 <body style="background-color:#050505; color:#07ee08; font-family: 'Hack', monospace;">
-    <table border="0" style="margin: auto;">
+    <table border="0">
         <thead>
             <tr>
-                <th colspan="1">
-                    <div style=" margin: auto;">
-
+                <th colspan="2">
+                    <div>
                         <h1>target analysis helper site</h1>
-                        <div style="height: 10px;"></div>
-                        <hr style="border-color: #07ee08; width: 50%;">
-                        <div style="height: 10px;"></div>
-
+                        <hr style="width: 50%;">
                     </div>
                 </th>
-
-                <th style="margin-top: 12px;height: min-content">
-                    <div style="margin-top: 12px;height: min-content">
-                        <h1>helpful data:</h1>
-                        <div style="height: 10px;"></div>
-                        <hr style="border-color: #07ee08; width: 50%;">
-                        <div style="height: 10px;"></div>
+                <th>
+                    <div>
+                        <h1>helpful data</h1>
+                        <hr style="width: 50%;">
                     </div>
-
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td style="font-size: medium; text-align: center;width: 60%;">
-
-                    <div style="height: 10px;"></div>
-                    <h2>BGP.tools</h2>
-                    <label for="bgpTools-AS" style="display: inline;">
-
-                        <div>
-                            <span style="width: max-content;">
-                                <div style="width:max-content;margin: auto;position: relative;"> ASN's -
-                                    <input type="text" id="bgpTools-AS" placeholder="input field"
-                                        style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','AS')">
-
-                                    <button onclick="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','AS')"
-                                        style="background-color:#101010; color:#00ff00">search</button>
-                                </div>
-                            </span>
-
-                            <div style="height: 3px;"></div>
-
-                            <div style="height: 9px;"></div>
-                        </div>
-
-                    </label>
+                <td colspan="2" class="left-section">
+                    <table border="0">
+                        <tbody>
+                            <tr>
+                                <td colspan="">
+                                    <h2>BGP.tools</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input_label">ASN's</td>
+                                <td><input type="text" id="bgpTools-AS" placeholder="input field"></td>
+                                <td><button onclick="openWebsite('https://bgp.tools/as/', 'bgpTools-AS','AS')">search</button></td>
+                            </tr>
+                            <tr>
+                                <td class="input_label">IP's</td>
+                                <td><input type="text" id="bgpTools-IP" placeholder="input field"></td>
+                                <td><button onclick="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','IP')">search</button></td>
+                            </tr>
+                            <tr>
+                                <td class="input_label">Hostname</td>
+                                <td><input type="text" id="bgpTools-HOST" placeholder="input field"></td>
+                                <td><button onclick="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','HOST')">search</button></td>
+                            </tr>
+                            <tr>
+                                <div style="height: 10px;"><br></div>
+                            </tr>
+                            <tr>
+                                <td colspan="">
+                                    <h2>Who.is</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input_label">Whois (ip)</td>
+                                <td><input type="text" id="whois-IP" placeholder="input field"></td>
+                                <td><button onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','IP')">search</button></td>
+                            </tr>
+                            <tr>
+                                <td class="input_label">Whois (Hostname)</td>
+                                <td><input type="text" id="whois-HOST" placeholder="input field"></td>
+                                <td><button onclick="openWebsite('https://who.is/whois/', 'whois-HOST','HOST')">search</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
-                <td style="width: 40%;">
-                    <span>
-                        <div style="width:max-content;margin: auto;position: relative;">
-                            <div id="output_text"></div>
-                        </div>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: medium; text-align: center;width: 60%;">
-                    <br>
-                    <label for="bgpTools-IP" style="display: inline;">
-
-                        <div>
-                            <span style="width: max-content;">
-                                <div style="width:max-content;margin: auto;position: relative;">IP's -
-                                    <input type="text" id="bgpTools-IP" placeholder="input field"
-                                        style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','IP')">
-
-                                    <button onclick="openWebsite('https://bgp.tools/prefix/', 'bgpTools-IP','IP')"
-                                        style="background-color:#101010; color:#00ff00">search</button>
-                                </div>
-
-                            </span>
-
-                            <div style="height: 3px;"></div>
-
-                            <div style="height: 9px;"></div>
-                        </div>
-
-                    </label>
+                <td class="right-section" colspan="2">
+                    <div id="output_text"></div>
                 </td>
             </tr>
-            <tr>
-                <td style="font-size: medium; text-align: center;width: 60%;">
-                    <br>
-                    <label for="bgpTools-HOST" style="display: inline;">
-
-                        <div>
-                            <span style="width: max-content;">
-                                <div style="width:max-content;margin: auto;position: relative;">Hostname -
-                                    <input type="text" id="bgpTools-HOST" placeholder="input field"
-                                        style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','HOST')">
-
-                                    <button onclick="openWebsite('https://bgp.tools/dns/', 'bgpTools-HOST','HOST')"
-                                        style="background-color:#101010; color:#00ff00;">search</button>
-                                </div>
-
-                            </span>
-
-                            <div style="height: 3px;"></div>
-
-                            <div style="height: 9px;"></div>
-                        </div>
-
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: medium; text-align: center;width: 60%;">
-                    <br>
-                    <div style="height: 10px;"></div>
-                    <h2>Who.is</h2>
-                    <label for="whois-IP" style="display: inline;">
-                        <div>
-                            <span style="width: max-content;">
-                                <div style="width:max-content;margin: auto;position: relative;"> Whois (ip) -
-                                    <input type="text" id="whois-IP" placeholder="input field"
-                                        style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','IP')">
-
-                                    <button
-                                        onclick="openWebsite('https://who.is/whois-ip/ip-address/', 'whois-IP','IP')"
-                                        style="background-color:#101010; color:#00ff00">search</button>
-                                </div>
-
-                            </span>
-
-                            <div style="height: 3px;"></div>
-
-                            <div style="height: 9px;"></div>
-                        </div>
-
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size: medium; text-align: center;width: 60%;">
-                    <br>
-                    <label for="whois-HOST" style="display: inline;">
-                        <div>
-                            <span style="width: max-content;">
-                                <div style="width:max-content;margin: auto;position: relative;"> Whois (Hostname) -
-                                    <input type="text" id="whois-HOST" placeholder="input field"
-                                        style="background-color:#101010; color:#00ff00;"
-                                        onsubmit="openWebsite('https://who.is/whois/', 'whois-HOST','HOST')">
-
-                                    <button
-                                        onclick="openWebsite('https://who.is/whois/', 'whois-HOST','HOST')"
-                                        style="background-color:#101010; color:#00ff00">search</button>
-                                </div>
-
-                            </span>
-
-                            <div style="height: 3px;"></div>
-
-                            <div style="height: 9px;"></div>
-                        </div>
-
-                    </label>
-                    <br>
-                </td>
-            <tr>
-
-
-
         </tbody>
-    </table>
+    </table>   
+
 
     <script>
         function observeDOMChanges() {
