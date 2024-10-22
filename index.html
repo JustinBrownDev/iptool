@@ -79,10 +79,10 @@
 
             const values = [[timestamp, textbox_id, data]];
 
-            const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED`, {
+            const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${accessToken}`,
+                    'Authorization': 'Bearer ${accessToken}',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -106,10 +106,10 @@
 
             const values = [[timestamp, textbox_id, data]];
 
-            const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED`, {
+            const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${accessToken}`,
+                    'Authorization': 'Bearer ${accessToken}',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -125,7 +125,7 @@
             try {
 
                 // Step 2: Use the IP to get more details from an IP lookup API (e.g., ipinfo.io)
-                const ipInfoResponse = await fetch(`https://ipinfo.io/${ip}/json`);
+                const ipInfoResponse = await fetch('https://ipinfo.io/${ip}/json');
                 const ipInfoData = await ipInfoResponse.json();
 
                 return ipInfoData;
@@ -137,7 +137,7 @@
         async function getAbuseDetails(ip) {
             try {
 
-                const response = await fetch(`https://api.ipabuse.com/api/v2/check?ip=${ip}`, {
+                const response = await fetch('https://api.ipabuse.com/api/v2/check?ip=${ip}', {
                     headers: {
                         'Authorization': 'Bearer 1216ffe43361389b6cf6c9c32c14294aa1b95fcd99ee9c3f303004ab3ab419442ae290924fa599db',
                     },
