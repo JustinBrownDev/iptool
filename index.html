@@ -103,10 +103,10 @@
             const range = 'Sheet2';  // Adjust to the name of your second sheet
 
             try {
-                const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`, {
+                const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values/' + range, {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${accessToken}`,
+                        'Authorization': 'Bearer ' + accessToken,
                         'Content-Type': 'application/json'
                     }
                 });
