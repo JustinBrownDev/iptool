@@ -116,6 +116,7 @@
                 }
 
                 const result = await response.json();
+                console.log(result)
                 const values = result.values || []; // Convert result to a 2D array, defaults to an empty array if no data
                 console.log('Data from second sheet:', values);
                 return values;
