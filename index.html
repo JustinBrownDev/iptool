@@ -100,7 +100,7 @@
         }
         async function getSecondSheetData() {
             const accessToken = await getAccessToken(); // Assumes you have a function to get the Google Sheets API access token
-            const range = 'Sheet2';  // Adjust to the name of your second sheet
+            const range = 'Formatted Data';  // Adjust to the name of your second sheet
 
             try {
                 const response = await fetch('https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values/' + range, {
@@ -406,7 +406,7 @@
     <div id="tableContainer"></div>
     <script>
         createTable("tableContainer", headers, data);
-        console.log(getSecondSheetData())
+        var sheet_data = getSecondSheetData()
     </script>
 </body>
 
