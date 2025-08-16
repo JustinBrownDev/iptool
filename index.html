@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Justin's Playground site</title>
+    <title>helpful ip utilities</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
 
     <script src="https://cdn.jsdelivr.net/npm/jsrsasign@10.5.23/lib/jsrsasign-all-min.js"></script>
@@ -43,14 +43,52 @@
 
             return jwt;
         }
-        function openWebsite(baseUrl, textboxId, extra_whatever) {
-            // Get the extension from the textbox
-            const extension = document.getElementById(textboxId).value;
-            logButtonPress(textboxId, extension, extra_whatever)
-            // Open the base URL with the extension in a new tab
-            const fullUrl = baseUrl + extension;
-            window.open(fullUrl, '_blank');
+        function openWebsite(baseUrl, textboxId, type) {
+            let value = document.getElementById(textboxId).value.trim();
+
+            if (!value) {
+                alert("Input cannot be empty.");
+                return;
+            }
+
+            // Strip whitespace
+            value = value.replace(/\s+/g, "");
+
+            let valid = false;
+
+            if (type === "IP") {
+                // IPv4 or IPv6 regex (covers :: compression)
+                const ipv4 = /^(25[0-5]|2[0-4]\d|[01]?\d?\d)(\.(25[0-5]|2[0-4]\d|[01]?\d?\d)){3}$/;
+                const ipv6 = /^(([0-9a-f]{1,4}:){1,7}[0-9a-f]{1,4}|::1)$/i;
+                if (ipv4.test(value) || ipv6.test(value)) {
+                    valid = true;
+                }
+            } else if (type === "HOST") {
+                // Remove http(s):// and www.
+                value = value.replace(/^(https?:\/\/)?(www\.)?/i, "");
+                // Allow typical domains
+                const hostname = /^(?=.{1,253}$)([a-z0-9-]{1,63}\.)+[a-z]{2,}$/i;
+                if (hostname.test(value)) {
+                    valid = true;
+                }
+            } else if (type === "AS") {
+                const asn = /^(AS)?\d+$/i;
+                if (asn.test(value)) {
+                    value = value.replace(/^AS/i, ""); // Normalize to digits only
+                    valid = true;
+                }
+            }
+
+            if (!valid) {
+                alert("Invalid input: " + value);
+                return;
+            }
+
+            // Log + open
+            logButtonPress(textboxId, value, type);
+            window.open(baseUrl + value, "_blank");
         }
+
         // Function to get Access Token using JWT
         async function getAccessToken() {
             const jwt = generateJWT();
@@ -112,7 +150,7 @@
                 }).then(
                     response => response.json()
                 );
-                var vals =  await response
+                var vals = await response
                 return vals
 
             } catch (error) {
@@ -392,23 +430,23 @@
                 </td>
                 <td class="right-section" colspan="2">
                     <!-- AUTO_REPLACE 1 -->
- <div id="output_text">IP: 203.188.252.24
-</div> 
-<!-- AUTO_REPLACE 1 -->
+                    <div id="output_text">IP: 203.188.252.24
+                    </div>
+                    <!-- AUTO_REPLACE 1 -->
                 </td>
             </tr>
         </tbody>
     </table>
     <div id="tableContainer"></div>
     <script>
-         async function blah() {
+        async function blah() {
             var sheet_data = (await getSecondSheetData()).values
             sheet_data.reverse()
             var sheet_headers = sheet_data.pop()
             console.log(sheet_headers)
             createTable("tableContainer", sheet_headers, sheet_data);
-         }
-         blah()
+        }
+        blah()
     </script>
 </body>
 
